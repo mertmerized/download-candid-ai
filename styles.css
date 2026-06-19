@@ -246,8 +246,112 @@ h3 {
 }
 
 .hero-art {
-  min-height: 548px;
+  min-height: 720px;
   position: relative;
+}
+
+.phone-stack {
+  margin: 0 auto;
+  max-width: 326px;
+  position: relative;
+  width: 100%;
+}
+
+.pose-guide-stack {
+  margin: 0 -40px 16px;
+  min-height: 104px;
+  position: relative;
+  width: calc(100% + 80px);
+  z-index: 2;
+}
+
+.pose-guide-card {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #1a1a1a;
+  border-radius: 28px;
+  box-shadow: 0 8px 16px rgba(26, 26, 26, 0.14);
+  display: flex;
+  flex-shrink: 0;
+  gap: 14px;
+  inset: 0;
+  min-height: 104px;
+  opacity: 0;
+  padding: 14px 14px 14px 16px;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.35s ease;
+  width: 100%;
+}
+
+.pose-guide-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.pose-guide-icon {
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  flex-shrink: 0;
+  height: 68px;
+  justify-content: center;
+  width: 68px;
+}
+
+.pose-guide-icon.tone-idle {
+  background: #ffe0b2;
+}
+
+.pose-guide-icon.tone-ready {
+  background: #d1fae5;
+}
+
+.pose-guide-mdi {
+  color: #57534e;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.pose-guide-emoji {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.pose-guide-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.pose-guide-headline {
+  color: var(--orange-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.pose-guide-detail {
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 4px 0 0;
+}
+
+.pose-guide-chevron {
+  align-items: center;
+  background: #ffe0b2;
+  border-radius: 50%;
+  color: var(--orange-deep);
+  display: flex;
+  flex-shrink: 0;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
 }
 
 .phone-frame {
@@ -257,44 +361,23 @@ h3 {
   border: 7px solid #1a1a1a;
   border-radius: 40px;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 326px;
-  min-height: 536px;
+  min-height: 640px;
+  overflow: visible;
   padding: 18px;
   position: relative;
   transform: rotate(1.5deg);
 }
 
-.phone-frame::before,
-.phone-frame::after {
-  border-radius: 50%;
-  content: "";
-  position: absolute;
-  z-index: -1;
-}
-
-.phone-frame::before {
-  background: var(--yellow);
-  height: 124px;
-  left: -48px;
-  opacity: 0.86;
-  top: 50px;
-  width: 124px;
-}
-
-.phone-frame::after {
-  background: rgba(245, 166, 35, 0.18);
-  bottom: -42px;
-  height: 172px;
-  right: -64px;
-  width: 172px;
-}
-
 .phone-top {
   background: #1a1a1a;
   border-radius: var(--radius-pill);
+  flex-shrink: 0;
   height: 6px;
-  margin: 0 auto 18px;
+  margin: 0 auto 16px;
   width: 80px;
 }
 
@@ -307,20 +390,68 @@ h3 {
 .main-preview {
   background: var(--surface-sunken);
   box-shadow: var(--soft-shadow);
-  height: 334px;
+  flex: 1 1 auto;
+  min-height: 380px;
 }
 
-.main-preview img {
+.preview-viewport {
   height: 100%;
+  inset: 0;
+  min-height: inherit;
+  overflow: hidden;
+  position: absolute;
+}
+
+.preview-slide {
+  height: 100%;
+  inset: 0;
   object-fit: cover;
+  opacity: 0;
+  position: absolute;
   width: 100%;
+  z-index: 0;
+}
+
+.preview-slide.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.preview-flash {
+  background: #ffffff;
+  border-radius: inherit;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 4;
+}
+
+.preview-flash.is-active {
+  animation: capture-flash 620ms linear forwards;
+}
+
+@keyframes capture-flash {
+  0% {
+    opacity: 0;
+  }
+
+  17.74% {
+    opacity: 0.38;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .main-preview::after {
   background: linear-gradient(180deg, transparent 38%, rgba(26, 26, 26, 0.5));
   content: "";
   inset: 0;
+  pointer-events: none;
   position: absolute;
+  z-index: 2;
 }
 
 .guide-bubble {
@@ -348,56 +479,44 @@ h3 {
 
 .mini-gallery {
   display: grid;
+  flex-shrink: 0;
   gap: 8px;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 14px;
 }
 
-.mini-gallery img {
+.mini-gallery-item {
+  border-radius: 18px;
+  display: block;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.mini-gallery-item img {
   aspect-ratio: 0.74;
   border: 3px solid #ffffff;
   border-radius: 18px;
   box-shadow: 0 10px 24px rgba(42, 35, 24, 0.12);
-  height: 92px;
+  display: block;
+  height: 96px;
   object-fit: cover;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
   width: 100%;
 }
 
-.floating-card {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(229, 229, 229, 0.72);
-  border-radius: 18px;
-  box-shadow: var(--soft-shadow);
-  color: var(--text);
-  display: flex;
-  font-size: 13px;
-  font-weight: 900;
-  gap: 9px;
-  padding: 12px 14px;
-  position: absolute;
+.mini-gallery-item:not(.is-active) {
+  opacity: 0.72;
 }
 
-.floating-card-one {
-  left: 2px;
-  top: 80px;
-  transform: rotate(-7deg);
-}
-
-.floating-card-two {
-  bottom: 82px;
-  right: 0;
-  transform: rotate(6deg);
-}
-
-.spark-dot {
-  background: var(--orange);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 6px rgba(245, 166, 35, 0.18),
-    0 0 0 12px rgba(245, 166, 35, 0.08);
-  height: 12px;
-  width: 12px;
+.mini-gallery-item.is-active img {
+  border-color: #1a1a1a;
+  box-shadow: 0 12px 28px rgba(26, 26, 26, 0.2);
+  transform: scale(1.03);
 }
 
 .feature-section,
@@ -837,17 +956,62 @@ h3 {
   }
 
   .hero-art {
-    min-height: 590px;
+    min-height: 780px;
+  }
+
+  .phone-stack {
+    max-width: 370px;
+  }
+
+  .pose-guide-stack {
+    margin: 0 -48px 18px;
+    min-height: 118px;
+    width: calc(100% + 96px);
+  }
+
+  .pose-guide-card {
+    border-radius: 32px;
+    gap: 16px;
+    min-height: 118px;
+    padding: 16px 16px 16px 18px;
+  }
+
+  .pose-guide-icon {
+    border-radius: 22px;
+    height: 76px;
+    width: 76px;
+  }
+
+  .pose-guide-mdi {
+    font-size: 38px;
+  }
+
+  .pose-guide-emoji {
+    font-size: 40px;
+  }
+
+  .pose-guide-headline {
+    font-size: 12px;
+  }
+
+  .pose-guide-detail {
+    font-size: 21px;
+    margin-top: 6px;
+  }
+
+  .pose-guide-chevron {
+    height: 36px;
+    width: 36px;
   }
 
   .phone-frame {
     max-width: 370px;
-    min-height: 610px;
+    min-height: 720px;
     padding: 22px;
   }
 
   .main-preview {
-    height: 388px;
+    min-height: 440px;
   }
 
   .mini-gallery {
@@ -857,22 +1021,7 @@ h3 {
 
   .mini-gallery img {
     border-radius: 22px;
-    height: 108px;
-  }
-
-  .floating-card {
-    border-radius: 20px;
-    font-size: 15px;
-    padding: 15px 18px;
-  }
-
-  .floating-card-one {
-    left: 0;
-    top: 105px;
-  }
-
-  .floating-card-two {
-    bottom: 100px;
+    height: 112px;
   }
 
   .feature-grid {
@@ -990,6 +1139,16 @@ h3 {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  .preview-flash.is-active {
+    animation: capture-flash 620ms linear forwards !important;
+  }
+
+  .mini-gallery-item,
+  .mini-gallery-item img,
+  .pose-guide-card {
     transition: none !important;
   }
 }

@@ -14,6 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-bg="white">
@@ -27,7 +31,7 @@
       <main id="top">
         <section class="hero section-grid" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <h1 id="hero-title">Better selfies, everytime</h1>
+            <h1 id="hero-title">AI guided selfies</h1>
 
             <div id="download" class="store-badges" aria-label="Download Candid AI">
               <a class="store-badge" href="https://tally.so/r/Bze0qA" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
@@ -38,30 +42,151 @@
               </a>
             </div>
 
-            <p class="hero-tagline">Let us guide your selfie</p>
+            <p class="hero-tagline">Better selfies, everytime</p>
           </div>
 
           <div class="hero-art" aria-label="Candid AI app preview">
-            <div class="phone-frame">
-              <div class="phone-top"></div>
-              <div class="preview-card main-preview">
-                <img src="./assets/paywall-hero.jpg" alt="Candid AI camera preview" />
-                <div class="guide-bubble guide-bubble-left">Move closer</div>
-                <div class="guide-bubble guide-bubble-right">Ready</div>
+            <div class="phone-stack">
+              <div class="phone-frame">
+                <div class="phone-top"></div>
+
+                <div class="pose-guide-stack" aria-live="polite">
+                  <div
+                    class="pose-guide-card is-active"
+                    role="status"
+                    aria-label="Pose Tip. Get closer"
+                    data-guide-index="0"
+                  >
+                    <div class="pose-guide-icon tone-idle" aria-hidden="true">
+                      <span class="mdi mdi-arrow-collapse pose-guide-mdi"></span>
+                    </div>
+                    <div class="pose-guide-copy">
+                      <p class="pose-guide-headline">Pose Tip</p>
+                      <p class="pose-guide-detail">Get closer</p>
+                    </div>
+                    <div class="pose-guide-chevron" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M9 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="2.4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div
+                    class="pose-guide-card"
+                    role="status"
+                    aria-label="Pose Tip. Tilt your head left"
+                    data-guide-index="1"
+                    hidden
+                  >
+                    <div class="pose-guide-icon tone-idle" aria-hidden="true">
+                      <span class="mdi mdi-rotate-left pose-guide-mdi"></span>
+                    </div>
+                    <div class="pose-guide-copy">
+                      <p class="pose-guide-headline">Pose Tip</p>
+                      <p class="pose-guide-detail">Tilt your head left</p>
+                    </div>
+                    <div class="pose-guide-chevron" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M9 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="2.4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div
+                    class="pose-guide-card"
+                    role="status"
+                    aria-label="Pose Tip. Smile"
+                    data-guide-index="2"
+                    hidden
+                  >
+                    <div class="pose-guide-icon tone-ready" aria-hidden="true">
+                      <span class="pose-guide-emoji">😉</span>
+                    </div>
+                    <div class="pose-guide-copy">
+                      <p class="pose-guide-headline">Pose Tip</p>
+                      <p class="pose-guide-detail">😉 Smile</p>
+                    </div>
+                    <div class="pose-guide-chevron" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M9 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="2.4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div
+                    class="pose-guide-card"
+                    role="status"
+                    aria-label="Capturing. Yesss, perfect pose!"
+                    data-guide-index="3"
+                    hidden
+                  >
+                    <div class="pose-guide-icon tone-ready" aria-hidden="true">
+                      <span class="pose-guide-emoji">📸</span>
+                    </div>
+                    <div class="pose-guide-copy">
+                      <p class="pose-guide-headline">Capturing</p>
+                      <p class="pose-guide-detail">Yesss, perfect pose!</p>
+                    </div>
+                    <div class="pose-guide-chevron" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M9 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="2.4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preview-card main-preview" id="phone-preview">
+                  <div class="preview-viewport">
+                    <img
+                      class="preview-slide is-active"
+                      src="./assets/onboarding-1.jpeg"
+                      alt="Candid AI camera preview"
+                    />
+                    <img class="preview-slide" src="./assets/onboarding-2.jpeg" alt="" />
+                    <img class="preview-slide" src="./assets/onboarding-3.jpeg" alt="" />
+                    <img class="preview-slide" src="./assets/onboarding-4.jpeg" alt="" />
+                  </div>
+                  <div class="preview-flash" aria-hidden="true"></div>
+                </div>
+                <div class="mini-gallery" aria-hidden="true">
+                  <div class="mini-gallery-item is-active">
+                    <img src="./assets/onboarding-1.jpeg" alt="" />
+                  </div>
+                  <div class="mini-gallery-item">
+                    <img src="./assets/onboarding-2.jpeg" alt="" />
+                  </div>
+                  <div class="mini-gallery-item">
+                    <img src="./assets/onboarding-3.jpeg" alt="" />
+                  </div>
+                  <div class="mini-gallery-item">
+                    <img src="./assets/onboarding-4.jpeg" alt="" />
+                  </div>
+                </div>
               </div>
-              <div class="mini-gallery" aria-hidden="true">
-                <img src="./assets/onboarding-1.jpeg" alt="" />
-                <img src="./assets/onboarding-2.jpeg" alt="" />
-                <img src="./assets/onboarding-3.jpeg" alt="" />
-                <img src="./assets/onboarding-4.jpeg" alt="" />
-              </div>
-            </div>
-            <div class="floating-card floating-card-one">
-              <span class="spark-dot"></span>
-              Fresh pose ideas
-            </div>
-            <div class="floating-card floating-card-two">
-              Auto-ready coaching
             </div>
           </div>
         </section>
@@ -214,6 +339,101 @@
       if (savedBackground) {
         document.body.dataset.bg = savedBackground;
       }
+
+      (function initPhonePreviewSlideshow() {
+        const SLIDE_MS = 2000;
+        const LAST_SLIDE_MS = 5000;
+        const FLASH_MS = 620;
+        const FLASH_PEAK_MS = 110;
+        const slides = Array.from(document.querySelectorAll(".preview-slide"));
+        const flash = document.querySelector(".preview-flash");
+        const thumbs = Array.from(document.querySelectorAll(".mini-gallery-item"));
+        const guides = Array.from(document.querySelectorAll(".pose-guide-card"));
+        const slideCount = slides.length;
+
+        if (slideCount === 0 || thumbs.length === 0 || guides.length === 0) {
+          return;
+        }
+
+        let activeIndex = 0;
+        let timerId = null;
+        let flashPlaying = false;
+
+        function slideDelay(index) {
+          return index === slideCount - 1 ? LAST_SLIDE_MS : SLIDE_MS;
+        }
+
+        function showSlide(index) {
+          slides.forEach(function (slide, slideIndex) {
+            slide.classList.toggle("is-active", slideIndex === index);
+          });
+
+          thumbs.forEach(function (thumb, thumbIndex) {
+            thumb.classList.toggle("is-active", thumbIndex === index);
+          });
+
+          guides.forEach(function (guide, guideIndex) {
+            var isActive = guideIndex === index;
+            guide.classList.toggle("is-active", isActive);
+            guide.hidden = !isActive;
+          });
+        }
+
+        function playCaptureFlash(onPeak) {
+          if (!flash || flashPlaying) {
+            return;
+          }
+
+          flashPlaying = true;
+          flash.classList.remove("is-active");
+          void flash.offsetWidth;
+          flash.classList.add("is-active");
+
+          window.setTimeout(function () {
+            if (typeof onPeak === "function") {
+              onPeak();
+            }
+          }, FLASH_PEAK_MS);
+
+          window.setTimeout(function () {
+            flashPlaying = false;
+            flash.classList.remove("is-active");
+          }, FLASH_MS);
+        }
+
+        function setActiveSlide(nextIndex, options) {
+          var skipFlash = options && options.skipFlash;
+          var next = ((nextIndex % slideCount) + slideCount) % slideCount;
+
+          if (next === activeIndex) {
+            return;
+          }
+
+          activeIndex = next;
+
+          if (skipFlash) {
+            showSlide(activeIndex);
+            return;
+          }
+
+          playCaptureFlash(function () {
+            showSlide(activeIndex);
+          });
+        }
+
+        function scheduleNextSlide() {
+          clearTimeout(timerId);
+          timerId = window.setTimeout(function () {
+            setActiveSlide(activeIndex + 1);
+            scheduleNextSlide();
+          }, slideDelay(activeIndex));
+        }
+
+        requestAnimationFrame(function () {
+          showSlide(0);
+          scheduleNextSlide();
+        });
+      })();
     </script>
   </body>
 </html>
