@@ -152,6 +152,32 @@ img {
   text-align: center;
 }
 
+.hero-title {
+  margin-bottom: 20px;
+}
+
+.hero-title-logo {
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: 0.2em;
+  box-shadow: 0 0.08em 0.22em rgba(26, 26, 26, 0.12);
+  display: inline-block;
+  line-height: 0;
+  margin-left: 0.35em;
+  padding: 0.07em;
+  transform: rotate(8deg);
+  vertical-align: -0.08em;
+}
+
+.hero-title-logo img {
+  aspect-ratio: 1;
+  display: block;
+  height: 0.88em;
+  max-width: none;
+  object-fit: contain;
+  width: 0.88em;
+}
+
 .hero-copy .store-badges {
   margin-top: 48px;
 }
