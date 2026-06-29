@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block common exploit bots
+Disallow: /xmlrpc.php
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /cdn-cgi/
+
+Sitemap: https://candidai.art/sitemap.xml

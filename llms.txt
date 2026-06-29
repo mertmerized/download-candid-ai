@@ -1,0 +1,30 @@
+# Candid AI
+
+> Candid AI is a selfie coaching app that guides users in real time before they take a photo — with pose templates, live camera prompts, and a private-first experience. Available on iOS and Android.
+
+## What Candid AI Does
+
+Candid AI helps people take better selfies by coaching them during the photo session, not after. Unlike photo editors that fix images in post, Candid provides live guidance while the camera is open: pose suggestions, framing nudges, and encouraging feedback to help every shot feel natural and confident.
+
+## Key Features
+
+- **Pose templates**: Browse pose ideas matched to outfit, mood, or location
+- **Live guides**: Real-time prompts to adjust angle, distance, and expression
+- **Confident capture**: Encouraging feedback so every session feels lighter
+- **Private-first**: Clear user control over what is captured, saved, and shared
+
+## How It Works
+
+1. Choose a pose template
+2. Follow live visual guides to line up the shot
+3. Capture when everything feels ready
+
+## Target Audience
+
+People who want to feel more confident taking selfies — whether solo or with others — without relying on heavy editing afterward.
+
+## Links
+
+- Homepage: https://candidai.art
+- App Store: https://tally.so/r/Bze0qA
+- Google Play: https://play.google.com/store/apps/details?id=com.candid.selfie
